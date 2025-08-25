@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Thiệp Sinh Nhật Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&display=swap');
+
+        .birthday-card {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .birthday-message {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .floating-element {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+
+            66% {
+                transform: translateY(-10px) rotate(-3deg);
+            }
+        }
+
+        .cake-animation {
+            animation: cake-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes cake-glow {
+            from {
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px rgba(255, 193, 7, 0.5));
+            }
+
+            to {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 30px rgba(255, 193, 7, 0.8));
+            }
+        }
+
+        .button-hover {
+            transition: all 0.3s ease;
+        }
+
+        .button-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .music-note {
+            animation: music-float 3s ease-in-out infinite;
+        }
+
+        @keyframes music-float {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: translateY(-15px) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .response-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .response-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .heart-beat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            animation: sparkle 2s linear infinite;
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body class="birthday-card">
+    <!-- Floating Background Elements -->
+    <div class="floating-element top-10 left-10" style="animation-delay: 0s;">
+        <div class="text-6xl">🎈</div>
+    </div>
+    <div class="floating-element top-20 right-16" style="animation-delay: 1s;">
+        <div class="text-5xl">🎈</div>
+    </div>
+    <div class="floating-element top-32 left-1/4" style="animation-delay: 2s;">
+        <div class="text-4xl">🌸</div>
+    </div>
+    <div class="floating-element top-40 right-1/3" style="animation-delay: 3s;">
+        <div class="text-5xl">🎁</div>
+    </div>
+    <div class="floating-element bottom-20 left-20" style="animation-delay: 1.5s;">
+        <div class="text-6xl">🌺</div>
+    </div>
+    <div class="floating-element bottom-32 right-20" style="animation-delay: 2.5s;">
+        <div class="text-5xl">🦋</div>
+    </div>
+
+    <!-- Sparkle Effects -->
+    <div class="sparkle top-1/4 left-1/3 text-yellow-300 text-2xl" style="animation-delay: 0.5s;">✨</div>
+    <div class="sparkle top-1/3 right-1/4 text-pink-300 text-xl" style="animation-delay: 1.2s;">⭐</div>
+    <div class="sparkle bottom-1/3 left-1/5 text-purple-300 text-2xl" style="animation-delay: 2.1s;">✨</div>
+    <div class="sparkle bottom-1/4 right-1/3 text-blue-300 text-xl" style="animation-delay: 0.8s;">⭐</div>
+
+    <!-- Main Content -->
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="text-center max-w-4xl">
+            <!-- Birthday Cake -->
+            <div class="cake-animation mb-8">
+                <div class="text-8xl md:text-9xl">🎂</div>
+            </div>
+
+            <!-- Main Birthday Message -->
+            <div class="birthday-message text-white mb-8">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+                    🎉 Chúc Mừng Sinh Nhật "Bạn Rang dở"! 🎉
+                </h1>
+                <p class="text-xl md:text-2xl lg:text-3xl font-medium opacity-90 mb-2">
+                    Chúc bạn một ngày sinh nhật thật ý nghĩa
+                </p>
+                <p class="text-lg md:text-xl opacity-80">
+                    Tràn đầy niềm vui, hạnh phúc và những điều tuyệt vời nhất! ✨
+                </p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <!-- Music Button -->
+                <button id="musicBtn" onclick="toggleMusic()"
+                    class="button-hover bg-gradient-to-r from-pink-500 to-rose-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg flex items-center gap-3">
+                    <span class="music-note text-2xl">🎵</span>
+                    <span id="musicText">Phát Nhạc Sinh Nhật</span>
+                </button>
+
+            </div>
+
+            <!-- Music Status -->
+            <div id="musicStatus" class="mt-6 text-white opacity-0 transition-opacity duration-500">
+                <div class="flex items-center justify-center gap-2">
+                    <span class="music-note text-xl">🎶</span>
+                    <span class="text-lg">Đang phát: "Happy Birthday Song"</span>
+                    <span class="music-note text-xl" style="animation-delay: 0.5s;">🎵</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Hidden Audio Element -->
+    <audio id="birthdayMusic" loop>
+        <source src="./music.mp3" type="audio/wav">
+    </audio>
+
+    <script>
+        let isPlaying = false;
+        let musicBtn = document.getElementById('musicBtn');
+        let musicText = document.getElementById('musicText');
+        let musicStatus = document.getElementById('musicStatus');
+        let birthdayMusic = document.getElementById('birthdayMusic');
+        // Music Toggle Function
+        function toggleMusic() {
+            if (!isPlaying) {
+                // Start music (simulated)
+                isPlaying = true;
+                musicText.textContent = 'Dừng Nhạc';
+                musicBtn.className = musicBtn.className.replace('from-pink-500 to-rose-500', 'from-green-500 to-emerald-500');
+                musicStatus.style.opacity = '1';
+                birthdayMusic.play()
+
+                // Add visual feedback
+                createMusicNotes();
+
+                // Simulate music playing
+                console.log('🎵 Playing birthday music...');
+
+            } else {
+                // Stop music
+                isPlaying = false;
+                musicText.textContent = 'Phát Nhạc Sinh Nhật';
+                musicBtn.className = musicBtn.className.replace('from-green-500 to-emerald-500', 'from-pink-500 to-rose-500');
+                musicStatus.style.opacity = '0';
+                birthdayMusic.pause()
+
+                console.log('⏹️ Music stopped');
+            }
+        }
+
+        // Create floating music notes
+        function createMusicNotes() {
+            if (!isPlaying) return;
+
+            const notes = ['🎵', '🎶', '♪', '♫'];
+            const note = document.createElement('div');
+            note.textContent = notes[Math.floor(Math.random() * notes.length)];
+            note.className = 'fixed text-2xl text-yellow-300 pointer-events-none z-10';
+            note.style.left = Math.random() * window.innerWidth + 'px';
+            note.style.top = window.innerHeight + 'px';
+            note.style.animation = 'music-note-rise 4s linear forwards';
+
+            document.body.appendChild(note);
+
+            // Remove note after animation
+            setTimeout(() => {
+                note.remove();
+            }, 4000);
+
+            // Create next note
+            if (isPlaying) {
+                setTimeout(createMusicNotes, 1000);
+            }
+        }
+        // Add CSS for music note animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes music-note-rise {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.textContent = '✨';
+            sparkle.className = 'fixed text-2xl pointer-events-none z-20';
+            sparkle.style.left = (x - 12) + 'px';
+            sparkle.style.top = (y - 12) + 'px';
+            sparkle.style.animation = 'sparkle-pop 1s ease-out forwards';
+
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+
+        // Add sparkle animation
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkle-pop {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                50% {
+                    transform: scale(1.2) rotate(180deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(0) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+
+        // Welcome message
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                console.log('🎂 Chào mừng đến với thiệp sinh nhật online!');
+            }, 1000);
+        });
+
+
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'97487165a164098a',t:'MTc1NjA5NzE1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
